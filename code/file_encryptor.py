@@ -11,9 +11,9 @@ class FileEncryptorWindow(QtWidgets.QMainWindow, Ui_MainWindow):
         super().__init__()
         self.ui = Ui_MainWindow()
         self.setupUi(self)
-        # self.setWindowOpacity(0.95)
-        # self.setWindowFlags(QtCore.Qt.WindowFlags(QtCore.Qt.FramelessWindowHint | QtCore.Qt.WindowStaysOnTopHint))
-        # self.setAttribute(QtCore.Qt.WA_TranslucentBackground)        
+        self.setWindowOpacity(0.95)
+        self.setWindowFlags(QtCore.Qt.WindowFlags(QtCore.Qt.FramelessWindowHint | QtCore.Qt.WindowStaysOnTopHint))
+        self.setAttribute(QtCore.Qt.WA_TranslucentBackground)        
         self.show()
         
 
