@@ -15,15 +15,25 @@ class FileEncryptorWindow(QtWidgets.QMainWindow, Ui_MainWindow):
         super().__init__()
         self.ui = Ui_MainWindow()
         self.setupUi(self)
-        # self.setWindowOpacity(0.95)
-        # self.setWindowFlags(QtCore.Qt.WindowFlags(QtCore.Qt.FramelessWindowHint | QtCore.Qt.WindowStaysOnTopHint))
-        # self.setAttribute(QtCore.Qt.WA_TranslucentBackground)   
-
-
+        self.windowOpacity()
+        self.setWindowFlags(QtCore.Qt.WindowFlags(QtCore.Qt.FramelessWindowHint | QtCore.Qt.WindowStaysOnTopHint))
+ 
         self.show()
+        self.setAttribute(QtCore.Qt.WA_TranslucentBackground) 
+        # -------------- Setting Functions To Window Buttons -----
+        self.MaximizeWin.clicked.connect(self.maximize)
+        self.MinimizeWin.clicked.connect(self.minimize)
+        self.ExitWin.clicked.connect(QtWidgets.qApp.quit)
+        self.MaximizeWin.setCheckable(True)
+        self.oldPos = self.pos()
+        # ------------------------- End --------------------------
 
         self.browse_btn.clicked.connect(self.browse)
         self.encrypt_btn.clicked.connect(self.compress)
+
+
+
+
 
     def browse(self):
         options = QFileDialog.Options()
@@ -43,12 +53,50 @@ class FileEncryptorWindow(QtWidgets.QMainWindow, Ui_MainWindow):
     
         shutil.move((base +'/{}.{}'.format(compressName[0], fileFormat)), (self.folder_dir +'/{}.{}'.format(compressName[0], fileFormat)))
         
+   
 
 
 
 
 
 
+    # --------- Window Button Functions ---------
+    def maximize(self):
+        if (self.MaximizeWin.isChecked()):
+            self.Container.setStyleSheet("QFrame {\n"
+        "    background-color:rgb(50, 50, 50);\n"
+            "    borders:none;\n"
+        "    border-radius:0px;\n"
+        "}")      
+            self.showMaximized()
+           
+
+        else:
+            self.showNormal()
+            self.resize(self.width()+1, self.height()+1)
+            # resets original border
+            self.Container.setStyleSheet("QFrame {\n"
+"    background-color:rgb(50, 50, 50);\n"
+"    borders:none;\n"
+"    border-radius:10px;\n"
+"}")     
+           
+
+        
+    def minimize(self):
+        self.showMinimized()
+    # ------------------ End --------------------
+
+     # ------------------- Mouse Function For Moving Calculator ---------------
+    def mousePressEvent(self, event):
+        self.oldPos = event.globalPos()
+
+    def mouseMoveEvent(self, event):
+        delta = QPoint(event.globalPos() - self.oldPos)
+        #print(delta)
+        self.move(self.x() + delta.x(), self.y() + delta.y())
+        self.oldPos = event.globalPos()
+    # ----------------------------------- End -------------------------------- 
 
 
 

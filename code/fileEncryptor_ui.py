@@ -14,48 +14,153 @@ from PyQt5 import QtCore, QtGui, QtWidgets
 class Ui_MainWindow(object):
     def setupUi(self, MainWindow):
         MainWindow.setObjectName("MainWindow")
-        MainWindow.resize(676, 710)
-        MainWindow.setMinimumSize(QtCore.QSize(600, 619))
+        MainWindow.resize(600, 718)
+        MainWindow.setMinimumSize(QtCore.QSize(600, 718))
         self.centralwidget = QtWidgets.QWidget(MainWindow)
+#         self.centralwidget.setStyleSheet("QWidget{\n"
+# "    background-color:rgb(50, 50, 50);\n"
+# "}")
         self.centralwidget.setObjectName("centralwidget")
         self.verticalLayout = QtWidgets.QVBoxLayout(self.centralwidget)
         self.verticalLayout.setContentsMargins(0, 0, 0, 0)
         self.verticalLayout.setSpacing(0)
         self.verticalLayout.setObjectName("verticalLayout")
-        self.frame = QtWidgets.QFrame(self.centralwidget)
-        self.frame.setMinimumSize(QtCore.QSize(0, 530))
-        self.frame.setStyleSheet("QFrame {\n"
+        self.Container = QtWidgets.QFrame(self.centralwidget)
+        self.Container.setMinimumSize(QtCore.QSize(0, 530))
+        self.Container.setStyleSheet("QFrame {\n"
 "    background-color:rgb(50, 50, 50);\n"
 "    borders:none;\n"
-"    border-radius:0px;\n"
+"    border-radius:10px;\n"
 "}")
-        self.frame.setFrameShape(QtWidgets.QFrame.StyledPanel)
-        self.frame.setFrameShadow(QtWidgets.QFrame.Raised)
-        self.frame.setObjectName("frame")
-        self.verticalLayout_2 = QtWidgets.QVBoxLayout(self.frame)
+        self.Container.setFrameShape(QtWidgets.QFrame.StyledPanel)
+        self.Container.setFrameShadow(QtWidgets.QFrame.Raised)
+        self.Container.setObjectName("Container")
+        self.verticalLayout_2 = QtWidgets.QVBoxLayout(self.Container)
         self.verticalLayout_2.setContentsMargins(0, 0, 0, 0)
         self.verticalLayout_2.setSpacing(0)
         self.verticalLayout_2.setObjectName("verticalLayout_2")
-        self.header = QtWidgets.QFrame(self.frame)
-        self.header.setMaximumSize(QtCore.QSize(16777215, 50))
+        self.header = QtWidgets.QFrame(self.Container)
+        self.header.setMinimumSize(QtCore.QSize(600, 20))
+        self.header.setMaximumSize(QtCore.QSize(200, 40))
         self.header.setFrameShape(QtWidgets.QFrame.StyledPanel)
         self.header.setFrameShadow(QtWidgets.QFrame.Raised)
         self.header.setObjectName("header")
         self.horizontalLayout = QtWidgets.QHBoxLayout(self.header)
         self.horizontalLayout.setObjectName("horizontalLayout")
-        self.app_name = QtWidgets.QLabel(self.header)
+        self.frame_4 = QtWidgets.QFrame(self.header)
+        self.frame_4.setMinimumSize(QtCore.QSize(100, 0))
+        self.frame_4.setFrameShape(QtWidgets.QFrame.StyledPanel)
+        self.frame_4.setFrameShadow(QtWidgets.QFrame.Raised)
+        self.frame_4.setObjectName("frame_4")
+        self.ExitWin = QtWidgets.QPushButton(self.frame_4)
+        self.ExitWin.setGeometry(QtCore.QRect(0, 0, 13, 13))
+        sizePolicy = QtWidgets.QSizePolicy(QtWidgets.QSizePolicy.Preferred, QtWidgets.QSizePolicy.Preferred)
+        sizePolicy.setHorizontalStretch(0)
+        sizePolicy.setVerticalStretch(0)
+        sizePolicy.setHeightForWidth(self.ExitWin.sizePolicy().hasHeightForWidth())
+        self.ExitWin.setSizePolicy(sizePolicy)
+        self.ExitWin.setMinimumSize(QtCore.QSize(13, 13))
+        self.ExitWin.setMaximumSize(QtCore.QSize(13, 13))
         font = QtGui.QFont()
-        font.setFamily("Tamil Sangam MN")
-        font.setPointSize(24)
-        self.app_name.setFont(font)
-        self.app_name.setStyleSheet("QLabel{\n"
-"    color:white;\n"
-"}")
-        self.app_name.setAlignment(QtCore.Qt.AlignCenter)
-        self.app_name.setObjectName("app_name")
-        self.horizontalLayout.addWidget(self.app_name)
-        self.verticalLayout_2.addWidget(self.header, 0, QtCore.Qt.AlignHCenter)
-        self.body = QtWidgets.QFrame(self.frame)
+        font.setFamily("Arial")
+        font.setPointSize(9)
+        font.setBold(True)
+        font.setWeight(75)
+        font.setKerning(False)
+        self.ExitWin.setFont(font)
+        self.ExitWin.setStyleSheet("QPushButton{\n"
+"    display:flex;\n"
+"    border:none;\n"
+"    border-radius:6px;\n"
+"    background-color: rgb(255, 56, 0);\n"
+"    color:rgb(249, 60, 0);\n"
+"    justify-contents:center;\n"
+"\n"
+"}\n"
+"\n"
+"\n"
+"\n"
+"\n"
+"\n"
+"QPushButton:hover {\n"
+"    color:rgb(255, 255, 255);\n"
+"    background-color: rgb(193, 46, 0);\n"
+"}\n"
+"")
+        self.ExitWin.setCheckable(False)
+        self.ExitWin.setAutoDefault(False)
+        self.ExitWin.setObjectName("ExitWin")
+        self.MinimizeWin = QtWidgets.QPushButton(self.frame_4)
+        self.MinimizeWin.setGeometry(QtCore.QRect(20, 0, 13, 13))
+        sizePolicy = QtWidgets.QSizePolicy(QtWidgets.QSizePolicy.Preferred, QtWidgets.QSizePolicy.Preferred)
+        sizePolicy.setHorizontalStretch(0)
+        sizePolicy.setVerticalStretch(0)
+        sizePolicy.setHeightForWidth(self.MinimizeWin.sizePolicy().hasHeightForWidth())
+        self.MinimizeWin.setSizePolicy(sizePolicy)
+        self.MinimizeWin.setMinimumSize(QtCore.QSize(13, 13))
+        self.MinimizeWin.setMaximumSize(QtCore.QSize(13, 13))
+        font = QtGui.QFont()
+        font.setFamily("Al Bayan")
+        font.setPointSize(18)
+        font.setBold(True)
+        font.setWeight(75)
+        font.setKerning(True)
+        self.MinimizeWin.setFont(font)
+        self.MinimizeWin.setStyleSheet("QPushButton{\n"
+"    border:none;\n"
+"    border-radius:6px;\n"
+"    background-color: rgb(255, 201, 3);\n"
+"    color:rgb(255, 201, 3);\n"
+"\n"
+"}\n"
+"\n"
+"\n"
+"\n"
+"QPushButton:hover {\n"
+"    color:rgb(255, 255, 255);\n"
+"    background-color: rgb(221, 177, 0);\n"
+"}\n"
+"")
+        self.MinimizeWin.setCheckable(False)
+        self.MinimizeWin.setAutoDefault(False)
+        self.MinimizeWin.setObjectName("MinimizeWin")
+        self.MaximizeWin = QtWidgets.QPushButton(self.frame_4)
+        self.MaximizeWin.setGeometry(QtCore.QRect(40, 0, 13, 13))
+        sizePolicy = QtWidgets.QSizePolicy(QtWidgets.QSizePolicy.Preferred, QtWidgets.QSizePolicy.Preferred)
+        sizePolicy.setHorizontalStretch(0)
+        sizePolicy.setVerticalStretch(0)
+        sizePolicy.setHeightForWidth(self.MaximizeWin.sizePolicy().hasHeightForWidth())
+        self.MaximizeWin.setSizePolicy(sizePolicy)
+        self.MaximizeWin.setMinimumSize(QtCore.QSize(13, 13))
+        self.MaximizeWin.setMaximumSize(QtCore.QSize(13, 13))
+        self.MaximizeWin.setSizeIncrement(QtCore.QSize(0, 0))
+        font = QtGui.QFont()
+        font.setFamily("Arial")
+        font.setPointSize(11)
+        font.setBold(True)
+        font.setWeight(75)
+        font.setKerning(False)
+        self.MaximizeWin.setFont(font)
+        self.MaximizeWin.setStyleSheet("QPushButton{\n"
+"    border:none;\n"
+"    border-radius:6px;\n"
+"    background-color: rgb(55, 202, 65);\n"
+"    color:rgb(55, 202, 65);\n"
+"\n"
+"}\n"
+"\n"
+"\n"
+"\n"
+"QPushButton:hover {\n"
+"    color:rgb(255, 255, 255);\n"
+"    background-color: rgb(58, 153, 14);\n"
+"}\n"
+"")
+        self.MaximizeWin.setAutoDefault(False)
+        self.MaximizeWin.setObjectName("MaximizeWin")
+        self.horizontalLayout.addWidget(self.frame_4)
+        self.verticalLayout_2.addWidget(self.header)
+        self.body = QtWidgets.QFrame(self.Container)
         self.body.setMinimumSize(QtCore.QSize(300, 400))
         self.body.setMaximumSize(QtCore.QSize(16777215, 600))
         self.body.setFrameShape(QtWidgets.QFrame.StyledPanel)
@@ -65,78 +170,12 @@ class Ui_MainWindow(object):
         self.gridLayout.setContentsMargins(0, 40, 0, 10)
         self.gridLayout.setSpacing(0)
         self.gridLayout.setObjectName("gridLayout")
-        self.widget_2 = QtWidgets.QWidget(self.body)
-        self.widget_2.setMinimumSize(QtCore.QSize(400, 400))
-        self.widget_2.setMaximumSize(QtCore.QSize(400, 16777215))
-        self.widget_2.setObjectName("widget_2")
-        self.outline = QtWidgets.QLabel(self.widget_2)
-        self.outline.setGeometry(QtCore.QRect(0, 0, 400, 400))
-        sizePolicy = QtWidgets.QSizePolicy(QtWidgets.QSizePolicy.Preferred, QtWidgets.QSizePolicy.Preferred)
-        sizePolicy.setHorizontalStretch(0)
-        sizePolicy.setVerticalStretch(0)
-        sizePolicy.setHeightForWidth(self.outline.sizePolicy().hasHeightForWidth())
-        self.outline.setSizePolicy(sizePolicy)
-        self.outline.setMinimumSize(QtCore.QSize(350, 350))
-        self.outline.setMaximumSize(QtCore.QSize(400, 400))
-        font = QtGui.QFont()
-        font.setPointSize(25)
-        self.outline.setFont(font)
-        self.outline.setStyleSheet("QLabel{      \n"
-"        background-color:rgb(176, 208, 0);\n"
-"        color:white;\n"
-"        borders:none;\n"
-"        border-radius:200px;\n"
-"}")
-        self.outline.setText("")
-        self.outline.setAlignment(QtCore.Qt.AlignCenter)
-        self.outline.setObjectName("outline")
-        self.loading_screen = QtWidgets.QLabel(self.widget_2)
-        self.loading_screen.setGeometry(QtCore.QRect(10, 10, 381, 381))
-        sizePolicy = QtWidgets.QSizePolicy(QtWidgets.QSizePolicy.Preferred, QtWidgets.QSizePolicy.Preferred)
-        sizePolicy.setHorizontalStretch(0)
-        sizePolicy.setVerticalStretch(0)
-        sizePolicy.setHeightForWidth(self.loading_screen.sizePolicy().hasHeightForWidth())
-        self.loading_screen.setSizePolicy(sizePolicy)
-        font = QtGui.QFont()
-        font.setPointSize(25)
-        self.loading_screen.setFont(font)
-        self.loading_screen.setStyleSheet("QLabel{      \n"
-"        background-color:rgb(43, 187, 255);\n"
-"        color:white;\n"
-"        borders:none;\n"
-"        border-radius:190px;\n"
-"}")
-        self.loading_screen.setText("")
-        self.loading_screen.setAlignment(QtCore.Qt.AlignCenter)
-        self.loading_screen.setObjectName("loading_screen")
-        self.status_screen = QtWidgets.QLabel(self.widget_2)
-        self.status_screen.setGeometry(QtCore.QRect(100, 100, 201, 81))
-        self.status_screen.setStyleSheet("QLabel {\n"
-"    background-color:rgb(179, 207, 0);\n"
-"    color:white;\n"
-"    borders:none;\n"
-"    border-radius:20px;\n"
-"}")
-        self.status_screen.setAlignment(QtCore.Qt.AlignCenter)
-        self.status_screen.setObjectName("status_screen")
-        self.progressBar = QtWidgets.QProgressBar(self.widget_2)
-        self.progressBar.setGeometry(QtCore.QRect(100, 240, 211, 71))
-        self.progressBar.setStyleSheet("QProgressBar{\n"
-"    background-color:rgb(81, 255, 77);\n"
-"}")
-        self.progressBar.setProperty("value", 24)
-        self.progressBar.setObjectName("progressBar")
-        self.outline.raise_()
-        self.loading_screen.raise_()
-        self.progressBar.raise_()
-        self.status_screen.raise_()
-        self.gridLayout.addWidget(self.widget_2, 5, 0, 1, 1, QtCore.Qt.AlignHCenter|QtCore.Qt.AlignVCenter)
-        self.frame_2 = QtWidgets.QFrame(self.body)
-        self.frame_2.setMinimumSize(QtCore.QSize(0, 50))
-        self.frame_2.setFrameShape(QtWidgets.QFrame.StyledPanel)
-        self.frame_2.setFrameShadow(QtWidgets.QFrame.Raised)
-        self.frame_2.setObjectName("frame_2")
-        self.gridLayout.addWidget(self.frame_2, 2, 0, 1, 1)
+        self.frame_3 = QtWidgets.QFrame(self.body)
+        self.frame_3.setMinimumSize(QtCore.QSize(0, 40))
+        self.frame_3.setFrameShape(QtWidgets.QFrame.StyledPanel)
+        self.frame_3.setFrameShadow(QtWidgets.QFrame.Raised)
+        self.frame_3.setObjectName("frame_3")
+        self.gridLayout.addWidget(self.frame_3, 2, 0, 1, 1)
         self.search_bar = QtWidgets.QFrame(self.body)
         sizePolicy = QtWidgets.QSizePolicy(QtWidgets.QSizePolicy.Preferred, QtWidgets.QSizePolicy.Preferred)
         sizePolicy.setHorizontalStretch(0)
@@ -150,8 +189,8 @@ class Ui_MainWindow(object):
         self.search_bar.setObjectName("search_bar")
         self.horizontalLayout_2 = QtWidgets.QHBoxLayout(self.search_bar)
         self.horizontalLayout_2.setSizeConstraint(QtWidgets.QLayout.SetFixedSize)
-        self.horizontalLayout_2.setContentsMargins(80, 10, 80, 30)
-        self.horizontalLayout_2.setSpacing(0)
+        self.horizontalLayout_2.setContentsMargins(100, 10, 100, 30)
+        self.horizontalLayout_2.setSpacing(20)
         self.horizontalLayout_2.setObjectName("horizontalLayout_2")
         self.search = QtWidgets.QPushButton(self.search_bar)
         sizePolicy = QtWidgets.QSizePolicy(QtWidgets.QSizePolicy.Preferred, QtWidgets.QSizePolicy.Preferred)
@@ -201,8 +240,74 @@ class Ui_MainWindow(object):
         self.browse_btn.setObjectName("browse_btn")
         self.horizontalLayout_2.addWidget(self.browse_btn)
         self.gridLayout.addWidget(self.search_bar, 1, 0, 1, 1, QtCore.Qt.AlignHCenter|QtCore.Qt.AlignVCenter)
-        self.verticalLayout_2.addWidget(self.body, 0, QtCore.Qt.AlignHCenter|QtCore.Qt.AlignVCenter)
-        self.footer = QtWidgets.QFrame(self.frame)
+        self.frame_2 = QtWidgets.QFrame(self.body)
+        self.frame_2.setMinimumSize(QtCore.QSize(400, 400))
+        self.frame_2.setMaximumSize(QtCore.QSize(400, 16777215))
+        self.frame_2.setObjectName("frame_2")
+        self.outline = QtWidgets.QLabel(self.frame_2)
+        self.outline.setGeometry(QtCore.QRect(0, 0, 400, 400))
+        sizePolicy = QtWidgets.QSizePolicy(QtWidgets.QSizePolicy.Preferred, QtWidgets.QSizePolicy.Preferred)
+        sizePolicy.setHorizontalStretch(0)
+        sizePolicy.setVerticalStretch(0)
+        sizePolicy.setHeightForWidth(self.outline.sizePolicy().hasHeightForWidth())
+        self.outline.setSizePolicy(sizePolicy)
+        self.outline.setMinimumSize(QtCore.QSize(350, 350))
+        self.outline.setMaximumSize(QtCore.QSize(400, 400))
+        font = QtGui.QFont()
+        font.setPointSize(25)
+        self.outline.setFont(font)
+        self.outline.setStyleSheet("QLabel{      \n"
+"        background-color:rgb(176, 208, 0);\n"
+"        color:white;\n"
+"        borders:none;\n"
+"        border-radius:200px;\n"
+"}")
+        self.outline.setText("")
+        self.outline.setAlignment(QtCore.Qt.AlignCenter)
+        self.outline.setObjectName("outline")
+        self.loading_screen = QtWidgets.QLabel(self.frame_2)
+        self.loading_screen.setGeometry(QtCore.QRect(10, 10, 381, 381))
+        sizePolicy = QtWidgets.QSizePolicy(QtWidgets.QSizePolicy.Preferred, QtWidgets.QSizePolicy.Preferred)
+        sizePolicy.setHorizontalStretch(0)
+        sizePolicy.setVerticalStretch(0)
+        sizePolicy.setHeightForWidth(self.loading_screen.sizePolicy().hasHeightForWidth())
+        self.loading_screen.setSizePolicy(sizePolicy)
+        font = QtGui.QFont()
+        font.setPointSize(25)
+        self.loading_screen.setFont(font)
+        self.loading_screen.setStyleSheet("QLabel{      \n"
+"        background-color:rgb(43, 187, 255);\n"
+"        color:white;\n"
+"        borders:none;\n"
+"        border-radius:190px;\n"
+"}")
+        self.loading_screen.setText("")
+        self.loading_screen.setAlignment(QtCore.Qt.AlignCenter)
+        self.loading_screen.setObjectName("loading_screen")
+        self.status_screen = QtWidgets.QLabel(self.frame_2)
+        self.status_screen.setGeometry(QtCore.QRect(100, 100, 201, 81))
+        self.status_screen.setStyleSheet("QLabel {\n"
+"    background-color:rgb(179, 207, 0);\n"
+"    color:white;\n"
+"    borders:none;\n"
+"    border-radius:20px;\n"
+"}")
+        self.status_screen.setAlignment(QtCore.Qt.AlignCenter)
+        self.status_screen.setObjectName("status_screen")
+        self.progressBar = QtWidgets.QProgressBar(self.frame_2)
+        self.progressBar.setGeometry(QtCore.QRect(100, 240, 211, 71))
+        self.progressBar.setStyleSheet("QProgressBar{\n"
+"    background-color:rgb(81, 255, 77);\n"
+"}")
+        self.progressBar.setProperty("value", 24)
+        self.progressBar.setObjectName("progressBar")
+        self.outline.raise_()
+        self.loading_screen.raise_()
+        self.progressBar.raise_()
+        self.status_screen.raise_()
+        self.gridLayout.addWidget(self.frame_2, 3, 0, 1, 1, QtCore.Qt.AlignHCenter)
+        self.verticalLayout_2.addWidget(self.body)
+        self.footer = QtWidgets.QFrame(self.Container)
         self.footer.setMinimumSize(QtCore.QSize(652, 50))
         self.footer.setMaximumSize(QtCore.QSize(16777215, 40))
         self.footer.setFrameShape(QtWidgets.QFrame.StyledPanel)
@@ -257,7 +362,7 @@ class Ui_MainWindow(object):
         self.decrypt_btn.setObjectName("decrypt_btn")
         self.horizontalLayout_3.addWidget(self.decrypt_btn)
         self.verticalLayout_2.addWidget(self.footer, 0, QtCore.Qt.AlignHCenter|QtCore.Qt.AlignVCenter)
-        self.verticalLayout.addWidget(self.frame)
+        self.verticalLayout.addWidget(self.Container)
         MainWindow.setCentralWidget(self.centralwidget)
 
         self.retranslateUi(MainWindow)
@@ -266,10 +371,12 @@ class Ui_MainWindow(object):
     def retranslateUi(self, MainWindow):
         _translate = QtCore.QCoreApplication.translate
         MainWindow.setWindowTitle(_translate("MainWindow", "MainWindow"))
-        self.app_name.setText(_translate("MainWindow", "File Encryptor"))
-        self.status_screen.setText(_translate("MainWindow", "Status"))
+        self.ExitWin.setText(_translate("MainWindow", "x"))
+        self.MinimizeWin.setText(_translate("MainWindow", "-"))
+        self.MaximizeWin.setText(_translate("MainWindow", "+"))
         self.search.setText(_translate("MainWindow", "Search"))
         self.browse_btn.setText(_translate("MainWindow", "Browse"))
+        self.status_screen.setText(_translate("MainWindow", "Status"))
         self.encrypt_btn.setText(_translate("MainWindow", "Encrypt"))
         self.decrypt_btn.setText(_translate("MainWindow", "Decrypt"))
 
