@@ -2,9 +2,10 @@ from PyQt5 import QtWidgets, QtCore, QtGui
 from PyQt5.QtCore import QPoint, Qt
 from PyQt5.QtWidgets import QApplication, QWidget, QVBoxLayout, QSizeGrip, QFileDialog, QInputDialog
 from PyQt5.QtGui import QColor, QPalette, QBrush
-from fileEncryptor_ui import Ui_MainWindow
+from encryptor_ui import Ui_MainWindow
 import shutil
 import os
+from encryptor import encryptor 
 
 
 class FileEncryptorWindow(QtWidgets.QMainWindow, Ui_MainWindow):
@@ -17,9 +18,9 @@ class FileEncryptorWindow(QtWidgets.QMainWindow, Ui_MainWindow):
         self.setupUi(self)
         self.windowOpacity()
         self.setWindowFlags(QtCore.Qt.WindowFlags(QtCore.Qt.FramelessWindowHint | QtCore.Qt.WindowStaysOnTopHint))
- 
         self.show()
         self.setAttribute(QtCore.Qt.WA_TranslucentBackground) 
+
         # -------------- Setting Functions To Window Buttons -----
         self.MaximizeWin.clicked.connect(self.maximize)
         self.MinimizeWin.clicked.connect(self.minimize)
@@ -29,7 +30,7 @@ class FileEncryptorWindow(QtWidgets.QMainWindow, Ui_MainWindow):
         # ------------------------- End --------------------------
 
         self.browse_btn.clicked.connect(self.browse)
-        self.encrypt_btn.clicked.connect(self.compress)
+        self.encrypt_btn.clicked.connect(self.compress) 
 
 
 
@@ -38,26 +39,20 @@ class FileEncryptorWindow(QtWidgets.QMainWindow, Ui_MainWindow):
     def browse(self):
         options = QFileDialog.Options()
         self.folder_dir = str(QFileDialog.getExistingDirectory(self, "Select Directory"))
-
         self.search.setText(self.folder_dir)
     
     def compress(self):
-        
+        e = encryptor()
         fileFormat = 'zip'
-
         compressName = QInputDialog.getText(self, 'Zip Filename', 'Provide a name for the zip file: ')
-      
-        shutil.make_archive(compressName[0], fileFormat, self.folder_dir)
+        zipfile = shutil.make_archive(compressName[0], fileFormat, self.folder_dir)
+        e.encrypt(zipfile)
+        # base = os.getcwd()
+        # shutil.move( zipfile , (self.folder_dir +'/{}.{}'.format(compressName[0], fileFormat)))
 
-        base = os.getcwd()
     
-        shutil.move((base +'/{}.{}'.format(compressName[0], fileFormat)), (self.folder_dir +'/{}.{}'.format(compressName[0], fileFormat)))
-        
+
    
-
-
-
-
 
 
     # --------- Window Button Functions ---------
@@ -101,5 +96,15 @@ class FileEncryptorWindow(QtWidgets.QMainWindow, Ui_MainWindow):
 
 
 
+        
+
+ 
+    
+
+
+
 if __name__ == "__main__":
     FileEncryptorWindow()
+
+
+
