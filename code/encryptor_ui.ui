@@ -2,17 +2,20 @@
 <ui version="4.0">
  <class>MainWindow</class>
  <widget class="QMainWindow" name="MainWindow">
+  <property name="windowModality">
+   <enum>Qt::ApplicationModal</enum>
+  </property>
   <property name="geometry">
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>600</width>
+    <width>450</width>
     <height>718</height>
    </rect>
   </property>
   <property name="minimumSize">
    <size>
-    <width>600</width>
+    <width>400</width>
     <height>718</height>
    </size>
   </property>
@@ -23,6 +26,8 @@
    <property name="styleSheet">
     <string notr="true">QWidget{
 	background-color:rgb(50, 50, 50);
+	borders:none;
+	border-radius:10px;
 }</string>
    </property>
    <layout class="QVBoxLayout" name="verticalLayout">
@@ -53,7 +58,7 @@
        <string notr="true">QFrame {
 	background-color:rgb(50, 50, 50);
 	borders:none;
-	border-radius:10px;
+	border-radius:6px;
 }</string>
       </property>
       <property name="frameShape">
@@ -70,26 +75,20 @@
         <number>0</number>
        </property>
        <property name="topMargin">
-        <number>0</number>
+        <number>10</number>
        </property>
        <property name="rightMargin">
         <number>0</number>
        </property>
        <property name="bottomMargin">
-        <number>0</number>
+        <number>25</number>
        </property>
-       <item>
-        <widget class="QFrame" name="header">
-         <property name="minimumSize">
-          <size>
-           <width>600</width>
-           <height>20</height>
-          </size>
-         </property>
+       <item alignment="Qt::AlignLeft|Qt::AlignTop">
+        <widget class="QFrame" name="Header">
          <property name="maximumSize">
           <size>
-           <width>200</width>
-           <height>40</height>
+           <width>593</width>
+           <height>134</height>
           </size>
          </property>
          <property name="frameShape">
@@ -98,13 +97,43 @@
          <property name="frameShadow">
           <enum>QFrame::Raised</enum>
          </property>
-         <layout class="QHBoxLayout" name="horizontalLayout">
+         <layout class="QHBoxLayout" name="horizontalLayout_2">
+          <property name="spacing">
+           <number>0</number>
+          </property>
+          <property name="leftMargin">
+           <number>0</number>
+          </property>
+          <property name="topMargin">
+           <number>0</number>
+          </property>
+          <property name="rightMargin">
+           <number>0</number>
+          </property>
+          <property name="bottomMargin">
+           <number>0</number>
+          </property>
           <item>
-           <widget class="QFrame" name="frame_4">
+           <widget class="QFrame" name="WinBtns">
+            <property name="enabled">
+             <bool>true</bool>
+            </property>
+            <property name="sizePolicy">
+             <sizepolicy hsizetype="Preferred" vsizetype="Preferred">
+              <horstretch>0</horstretch>
+              <verstretch>0</verstretch>
+             </sizepolicy>
+            </property>
             <property name="minimumSize">
              <size>
               <width>100</width>
               <height>0</height>
+             </size>
+            </property>
+            <property name="maximumSize">
+             <size>
+              <width>100</width>
+              <height>20</height>
              </size>
             </property>
             <property name="frameShape">
@@ -113,44 +142,53 @@
             <property name="frameShadow">
              <enum>QFrame::Raised</enum>
             </property>
-            <widget class="QPushButton" name="ExitWin">
-             <property name="geometry">
-              <rect>
-               <x>0</x>
-               <y>0</y>
-               <width>13</width>
-               <height>13</height>
-              </rect>
+            <layout class="QHBoxLayout" name="horizontalLayout" stretch="0,0,0">
+             <property name="spacing">
+              <number>0</number>
              </property>
-             <property name="sizePolicy">
-              <sizepolicy hsizetype="Preferred" vsizetype="Preferred">
-               <horstretch>0</horstretch>
-               <verstretch>0</verstretch>
-              </sizepolicy>
+             <property name="leftMargin">
+              <number>0</number>
              </property>
-             <property name="minimumSize">
-              <size>
-               <width>13</width>
-               <height>13</height>
-              </size>
+             <property name="topMargin">
+              <number>0</number>
              </property>
-             <property name="maximumSize">
-              <size>
-               <width>13</width>
-               <height>13</height>
-              </size>
+             <property name="rightMargin">
+              <number>0</number>
              </property>
-             <property name="font">
-              <font>
-               <family>Arial</family>
-               <pointsize>9</pointsize>
-               <weight>75</weight>
-               <bold>true</bold>
-               <kerning>false</kerning>
-              </font>
+             <property name="bottomMargin">
+              <number>0</number>
              </property>
-             <property name="styleSheet">
-              <string notr="true">QPushButton{
+             <item>
+              <widget class="QPushButton" name="ExitWin">
+               <property name="sizePolicy">
+                <sizepolicy hsizetype="Preferred" vsizetype="Preferred">
+                 <horstretch>0</horstretch>
+                 <verstretch>0</verstretch>
+                </sizepolicy>
+               </property>
+               <property name="minimumSize">
+                <size>
+                 <width>13</width>
+                 <height>13</height>
+                </size>
+               </property>
+               <property name="maximumSize">
+                <size>
+                 <width>13</width>
+                 <height>13</height>
+                </size>
+               </property>
+               <property name="font">
+                <font>
+                 <family>Arial</family>
+                 <pointsize>9</pointsize>
+                 <weight>75</weight>
+                 <bold>true</bold>
+                 <kerning>false</kerning>
+                </font>
+               </property>
+               <property name="styleSheet">
+                <string notr="true">QPushButton{
 	display:flex;
 	border:none;
 	border-radius:6px;
@@ -169,55 +207,49 @@ QPushButton:hover {
 	background-color: rgb(193, 46, 0);
 }
 </string>
-             </property>
-             <property name="text">
-              <string>x</string>
-             </property>
-             <property name="checkable">
-              <bool>false</bool>
-             </property>
-             <property name="autoDefault">
-              <bool>false</bool>
-             </property>
-            </widget>
-            <widget class="QPushButton" name="MinimizeWin">
-             <property name="geometry">
-              <rect>
-               <x>20</x>
-               <y>0</y>
-               <width>13</width>
-               <height>13</height>
-              </rect>
-             </property>
-             <property name="sizePolicy">
-              <sizepolicy hsizetype="Preferred" vsizetype="Preferred">
-               <horstretch>0</horstretch>
-               <verstretch>0</verstretch>
-              </sizepolicy>
-             </property>
-             <property name="minimumSize">
-              <size>
-               <width>13</width>
-               <height>13</height>
-              </size>
-             </property>
-             <property name="maximumSize">
-              <size>
-               <width>13</width>
-               <height>13</height>
-              </size>
-             </property>
-             <property name="font">
-              <font>
-               <family>Al Bayan</family>
-               <pointsize>18</pointsize>
-               <weight>75</weight>
-               <bold>true</bold>
-               <kerning>true</kerning>
-              </font>
-             </property>
-             <property name="styleSheet">
-              <string notr="true">QPushButton{
+               </property>
+               <property name="text">
+                <string>x</string>
+               </property>
+               <property name="checkable">
+                <bool>false</bool>
+               </property>
+               <property name="autoDefault">
+                <bool>false</bool>
+               </property>
+              </widget>
+             </item>
+             <item>
+              <widget class="QPushButton" name="MinimizeWin">
+               <property name="sizePolicy">
+                <sizepolicy hsizetype="Preferred" vsizetype="Preferred">
+                 <horstretch>0</horstretch>
+                 <verstretch>0</verstretch>
+                </sizepolicy>
+               </property>
+               <property name="minimumSize">
+                <size>
+                 <width>13</width>
+                 <height>13</height>
+                </size>
+               </property>
+               <property name="maximumSize">
+                <size>
+                 <width>13</width>
+                 <height>13</height>
+                </size>
+               </property>
+               <property name="font">
+                <font>
+                 <family>Al Bayan</family>
+                 <pointsize>18</pointsize>
+                 <weight>75</weight>
+                 <bold>true</bold>
+                 <kerning>true</kerning>
+                </font>
+               </property>
+               <property name="styleSheet">
+                <string notr="true">QPushButton{
 	border:none;
 	border-radius:6px;
 	background-color: rgb(255, 201, 3);
@@ -232,61 +264,55 @@ QPushButton:hover {
 	background-color: rgb(221, 177, 0);
 }
 </string>
-             </property>
-             <property name="text">
-              <string>-</string>
-             </property>
-             <property name="checkable">
-              <bool>false</bool>
-             </property>
-             <property name="autoDefault">
-              <bool>false</bool>
-             </property>
-            </widget>
-            <widget class="QPushButton" name="MaximizeWin">
-             <property name="geometry">
-              <rect>
-               <x>40</x>
-               <y>0</y>
-               <width>13</width>
-               <height>13</height>
-              </rect>
-             </property>
-             <property name="sizePolicy">
-              <sizepolicy hsizetype="Preferred" vsizetype="Preferred">
-               <horstretch>0</horstretch>
-               <verstretch>0</verstretch>
-              </sizepolicy>
-             </property>
-             <property name="minimumSize">
-              <size>
-               <width>13</width>
-               <height>13</height>
-              </size>
-             </property>
-             <property name="maximumSize">
-              <size>
-               <width>13</width>
-               <height>13</height>
-              </size>
-             </property>
-             <property name="sizeIncrement">
-              <size>
-               <width>0</width>
-               <height>0</height>
-              </size>
-             </property>
-             <property name="font">
-              <font>
-               <family>Arial</family>
-               <pointsize>11</pointsize>
-               <weight>75</weight>
-               <bold>true</bold>
-               <kerning>false</kerning>
-              </font>
-             </property>
-             <property name="styleSheet">
-              <string notr="true">QPushButton{
+               </property>
+               <property name="text">
+                <string>-</string>
+               </property>
+               <property name="checkable">
+                <bool>false</bool>
+               </property>
+               <property name="autoDefault">
+                <bool>false</bool>
+               </property>
+              </widget>
+             </item>
+             <item>
+              <widget class="QPushButton" name="MaximizeWin">
+               <property name="sizePolicy">
+                <sizepolicy hsizetype="Preferred" vsizetype="Preferred">
+                 <horstretch>0</horstretch>
+                 <verstretch>0</verstretch>
+                </sizepolicy>
+               </property>
+               <property name="minimumSize">
+                <size>
+                 <width>13</width>
+                 <height>13</height>
+                </size>
+               </property>
+               <property name="maximumSize">
+                <size>
+                 <width>13</width>
+                 <height>13</height>
+                </size>
+               </property>
+               <property name="sizeIncrement">
+                <size>
+                 <width>0</width>
+                 <height>0</height>
+                </size>
+               </property>
+               <property name="font">
+                <font>
+                 <family>Arial</family>
+                 <pointsize>11</pointsize>
+                 <weight>75</weight>
+                 <bold>true</bold>
+                 <kerning>false</kerning>
+                </font>
+               </property>
+               <property name="styleSheet">
+                <string notr="true">QPushButton{
 	border:none;
 	border-radius:6px;
 	background-color: rgb(55, 202, 65);
@@ -301,14 +327,69 @@ QPushButton:hover {
 	background-color: rgb(58, 153, 14);
 }
 </string>
-             </property>
-             <property name="text">
-              <string>+</string>
-             </property>
-             <property name="autoDefault">
-              <bool>false</bool>
-             </property>
-            </widget>
+               </property>
+               <property name="text">
+                <string>+</string>
+               </property>
+               <property name="autoDefault">
+                <bool>false</bool>
+               </property>
+              </widget>
+             </item>
+            </layout>
+           </widget>
+          </item>
+         </layout>
+        </widget>
+       </item>
+       <item>
+        <widget class="QFrame" name="Title">
+         <property name="minimumSize">
+          <size>
+           <width>0</width>
+           <height>50</height>
+          </size>
+         </property>
+         <property name="frameShape">
+          <enum>QFrame::StyledPanel</enum>
+         </property>
+         <property name="frameShadow">
+          <enum>QFrame::Raised</enum>
+         </property>
+         <layout class="QHBoxLayout" name="horizontalLayout_4">
+          <property name="spacing">
+           <number>0</number>
+          </property>
+          <property name="leftMargin">
+           <number>0</number>
+          </property>
+          <property name="topMargin">
+           <number>0</number>
+          </property>
+          <property name="rightMargin">
+           <number>0</number>
+          </property>
+          <property name="bottomMargin">
+           <number>0</number>
+          </property>
+          <item>
+           <widget class="QLabel" name="File_Encryptor">
+            <property name="font">
+             <font>
+              <pointsize>25</pointsize>
+             </font>
+            </property>
+            <property name="styleSheet">
+             <string notr="true">QLabel{
+	color:white;
+}</string>
+            </property>
+            <property name="text">
+             <string>File Encryptor</string>
+            </property>
+            <property name="alignment">
+             <set>Qt::AlignCenter</set>
+            </property>
            </widget>
           </item>
          </layout>
@@ -319,7 +400,7 @@ QPushButton:hover {
          <property name="minimumSize">
           <size>
            <width>300</width>
-           <height>400</height>
+           <height>700</height>
           </size>
          </property>
          <property name="maximumSize">
@@ -339,7 +420,7 @@ QPushButton:hover {
            <number>0</number>
           </property>
           <property name="topMargin">
-           <number>40</number>
+           <number>0</number>
           </property>
           <property name="rightMargin">
            <number>0</number>
@@ -350,157 +431,8 @@ QPushButton:hover {
           <property name="spacing">
            <number>0</number>
           </property>
-          <item row="2" column="0">
-           <widget class="QFrame" name="frame_3">
-            <property name="minimumSize">
-             <size>
-              <width>0</width>
-              <height>40</height>
-             </size>
-            </property>
-            <property name="frameShape">
-             <enum>QFrame::StyledPanel</enum>
-            </property>
-            <property name="frameShadow">
-             <enum>QFrame::Raised</enum>
-            </property>
-           </widget>
-          </item>
-          <item row="1" column="0" alignment="Qt::AlignHCenter|Qt::AlignVCenter">
-           <widget class="QFrame" name="search_bar">
-            <property name="sizePolicy">
-             <sizepolicy hsizetype="Preferred" vsizetype="Preferred">
-              <horstretch>0</horstretch>
-              <verstretch>0</verstretch>
-             </sizepolicy>
-            </property>
-            <property name="minimumSize">
-             <size>
-              <width>600</width>
-              <height>70</height>
-             </size>
-            </property>
-            <property name="maximumSize">
-             <size>
-              <width>16777215</width>
-              <height>70</height>
-             </size>
-            </property>
-            <property name="frameShape">
-             <enum>QFrame::NoFrame</enum>
-            </property>
-            <property name="frameShadow">
-             <enum>QFrame::Raised</enum>
-            </property>
-            <layout class="QHBoxLayout" name="horizontalLayout_2">
-             <property name="spacing">
-              <number>20</number>
-             </property>
-             <property name="sizeConstraint">
-              <enum>QLayout::SetFixedSize</enum>
-             </property>
-             <property name="leftMargin">
-              <number>100</number>
-             </property>
-             <property name="topMargin">
-              <number>10</number>
-             </property>
-             <property name="rightMargin">
-              <number>100</number>
-             </property>
-             <property name="bottomMargin">
-              <number>30</number>
-             </property>
-             <item>
-              <widget class="QPushButton" name="search">
-               <property name="sizePolicy">
-                <sizepolicy hsizetype="Preferred" vsizetype="Preferred">
-                 <horstretch>8</horstretch>
-                 <verstretch>5</verstretch>
-                </sizepolicy>
-               </property>
-               <property name="minimumSize">
-                <size>
-                 <width>400</width>
-                 <height>20</height>
-                </size>
-               </property>
-               <property name="maximumSize">
-                <size>
-                 <width>510</width>
-                 <height>20</height>
-                </size>
-               </property>
-               <property name="font">
-                <font>
-                 <pointsize>10</pointsize>
-                </font>
-               </property>
-               <property name="styleSheet">
-                <string notr="true">QPushButton {
-	background-color:white;
-	color:black;
-	border:none;
-	border-radius:8px;
-
-}
-
-</string>
-               </property>
-               <property name="text">
-                <string>Search</string>
-               </property>
-              </widget>
-             </item>
-             <item>
-              <widget class="QPushButton" name="browse_btn">
-               <property name="sizePolicy">
-                <sizepolicy hsizetype="Preferred" vsizetype="Maximum">
-                 <horstretch>1</horstretch>
-                 <verstretch>0</verstretch>
-                </sizepolicy>
-               </property>
-               <property name="minimumSize">
-                <size>
-                 <width>54</width>
-                 <height>20</height>
-                </size>
-               </property>
-               <property name="maximumSize">
-                <size>
-                 <width>54</width>
-                 <height>20</height>
-                </size>
-               </property>
-               <property name="font">
-                <font>
-                 <pointsize>12</pointsize>
-                </font>
-               </property>
-               <property name="styleSheet">
-                <string notr="true">QPushButton {
-	background-color:rgb(176, 206, 0);
-	color:rgb(255, 255, 255);
-	border:none;
-	border-radius:8px;
-
-}
-
-QPushButton:hover {
-	background-color:rgb(58, 186, 255);
-
-}</string>
-               </property>
-               <property name="text">
-                <string>Browse</string>
-               </property>
-              </widget>
-             </item>
-            </layout>
-           </widget>
-          </item>
-          <item row="3" column="0" alignment="Qt::AlignHCenter">
-           <widget class="QFrame" name="frame_2">
+          <item row="0" column="0" alignment="Qt::AlignHCenter">
+           <widget class="QFrame" name="Info_Screen">
             <property name="minimumSize">
              <size>
               <width>400</width>
@@ -510,7 +442,7 @@ QPushButton:hover {
             <property name="maximumSize">
              <size>
               <width>400</width>
-              <height>16777215</height>
+              <height>400</height>
              </size>
             </property>
             <widget class="QLabel" name="outline">
@@ -595,25 +527,57 @@ QPushButton:hover {
               <set>Qt::AlignCenter</set>
              </property>
             </widget>
-            <widget class="QLabel" name="status_screen">
+            <widget class="QLabel" name="statusScreen">
              <property name="geometry">
               <rect>
-               <x>100</x>
+               <x>90</x>
                <y>100</y>
-               <width>201</width>
-               <height>81</height>
+               <width>221</width>
+               <height>101</height>
               </rect>
+             </property>
+             <property name="font">
+              <font>
+               <pointsize>16</pointsize>
+              </font>
              </property>
              <property name="styleSheet">
               <string notr="true">QLabel {
-	background-color:rgb(179, 207, 0);
-	color:white;
+	background-color:rgb(240, 244, 244);
+	color:rgb(137, 139, 139);
 	borders:none;
 	border-radius:20px;
 }</string>
              </property>
              <property name="text">
-              <string>Status</string>
+              <string>Ready</string>
+             </property>
+             <property name="alignment">
+              <set>Qt::AlignCenter</set>
+             </property>
+            </widget>
+            <widget class="QLabel" name="percentage">
+             <property name="geometry">
+              <rect>
+               <x>150</x>
+               <y>220</y>
+               <width>111</width>
+               <height>61</height>
+              </rect>
+             </property>
+             <property name="font">
+              <font>
+               <pointsize>40</pointsize>
+              </font>
+             </property>
+             <property name="styleSheet">
+              <string notr="true">QLabel{
+	background-color:rgb(58, 186, 255);	
+	color:rgb(224, 228, 228);
+}</string>
+             </property>
+             <property name="text">
+              <string>0%</string>
              </property>
              <property name="alignment">
               <set>Qt::AlignCenter</set>
@@ -622,88 +586,106 @@ QPushButton:hover {
             <widget class="QProgressBar" name="progressBar">
              <property name="geometry">
               <rect>
-               <x>100</x>
-               <y>240</y>
-               <width>211</width>
-               <height>71</height>
+               <x>90</x>
+               <y>310</y>
+               <width>221</width>
+               <height>10</height>
               </rect>
+             </property>
+             <property name="minimumSize">
+              <size>
+               <width>0</width>
+               <height>10</height>
+              </size>
+             </property>
+             <property name="maximumSize">
+              <size>
+               <width>16777215</width>
+               <height>10</height>
+              </size>
              </property>
              <property name="styleSheet">
               <string notr="true">QProgressBar{
-	background-color:rgb(81, 255, 77);
+	background-color:rgb(44, 150, 207);
+	color:green;
+	borders:none;
+	border-radius:4px;
+	
+}
+
+QProgressBar::chunk {
+	background-color:rgb(179, 209, 0);
+	borders:none;
+	border-radius:4px;
 }</string>
              </property>
              <property name="value">
               <number>24</number>
              </property>
+             <property name="textVisible">
+              <bool>false</bool>
+             </property>
             </widget>
-            <zorder>outline</zorder>
-            <zorder>loading_screen</zorder>
-            <zorder>progressBar</zorder>
-            <zorder>status_screen</zorder>
            </widget>
           </item>
-         </layout>
-        </widget>
-       </item>
-       <item alignment="Qt::AlignHCenter|Qt::AlignVCenter">
-        <widget class="QFrame" name="footer">
-         <property name="minimumSize">
-          <size>
-           <width>652</width>
-           <height>50</height>
-          </size>
-         </property>
-         <property name="maximumSize">
-          <size>
-           <width>16777215</width>
-           <height>40</height>
-          </size>
-         </property>
-         <property name="frameShape">
-          <enum>QFrame::StyledPanel</enum>
-         </property>
-         <property name="frameShadow">
-          <enum>QFrame::Raised</enum>
-         </property>
-         <layout class="QHBoxLayout" name="horizontalLayout_3">
-          <property name="spacing">
-           <number>200</number>
-          </property>
-          <property name="leftMargin">
-           <number>0</number>
-          </property>
-          <property name="topMargin">
-           <number>0</number>
-          </property>
-          <property name="rightMargin">
-           <number>0</number>
-          </property>
-          <property name="bottomMargin">
-           <number>100</number>
-          </property>
-          <item>
-           <widget class="QPushButton" name="encrypt_btn">
-            <property name="sizePolicy">
-             <sizepolicy hsizetype="Preferred" vsizetype="Preferred">
-              <horstretch>0</horstretch>
-              <verstretch>0</verstretch>
-             </sizepolicy>
-            </property>
+          <item row="1" column="0">
+           <widget class="QFrame" name="footer">
             <property name="minimumSize">
              <size>
-              <width>100</width>
-              <height>40</height>
+              <width>400</width>
+              <height>50</height>
              </size>
             </property>
             <property name="maximumSize">
              <size>
-              <width>100</width>
+              <width>16777215</width>
               <height>40</height>
              </size>
             </property>
-            <property name="styleSheet">
-             <string notr="true">QPushButton {
+            <property name="frameShape">
+             <enum>QFrame::StyledPanel</enum>
+            </property>
+            <property name="frameShadow">
+             <enum>QFrame::Raised</enum>
+            </property>
+            <layout class="QHBoxLayout" name="horizontalLayout_3">
+             <property name="spacing">
+              <number>120</number>
+             </property>
+             <property name="leftMargin">
+              <number>15</number>
+             </property>
+             <property name="topMargin">
+              <number>0</number>
+             </property>
+             <property name="rightMargin">
+              <number>0</number>
+             </property>
+             <property name="bottomMargin">
+              <number>0</number>
+             </property>
+             <item>
+              <widget class="QPushButton" name="encrypt_btn">
+               <property name="sizePolicy">
+                <sizepolicy hsizetype="Preferred" vsizetype="Preferred">
+                 <horstretch>0</horstretch>
+                 <verstretch>0</verstretch>
+                </sizepolicy>
+               </property>
+               <property name="minimumSize">
+                <size>
+                 <width>100</width>
+                 <height>40</height>
+                </size>
+               </property>
+               <property name="maximumSize">
+                <size>
+                 <width>100</width>
+                 <height>40</height>
+                </size>
+               </property>
+               <property name="styleSheet">
+                <string notr="true">QPushButton {
 	background-color:rgb(176, 206, 0);
 	color:rgb(255, 255, 255);
 	border:none;
@@ -715,34 +697,34 @@ QPushButton:hover {
 	background-color:rgb(58, 186, 255);
 
 }</string>
-            </property>
-            <property name="text">
-             <string>Encrypt</string>
-            </property>
-           </widget>
-          </item>
-          <item>
-           <widget class="QPushButton" name="decrypt_btn">
-            <property name="sizePolicy">
-             <sizepolicy hsizetype="Preferred" vsizetype="Preferred">
-              <horstretch>0</horstretch>
-              <verstretch>0</verstretch>
-             </sizepolicy>
-            </property>
-            <property name="minimumSize">
-             <size>
-              <width>100</width>
-              <height>40</height>
-             </size>
-            </property>
-            <property name="maximumSize">
-             <size>
-              <width>100</width>
-              <height>40</height>
-             </size>
-            </property>
-            <property name="styleSheet">
-             <string notr="true">QPushButton {
+               </property>
+               <property name="text">
+                <string>Encrypt</string>
+               </property>
+              </widget>
+             </item>
+             <item>
+              <widget class="QPushButton" name="decrypt_btn">
+               <property name="sizePolicy">
+                <sizepolicy hsizetype="Preferred" vsizetype="Preferred">
+                 <horstretch>0</horstretch>
+                 <verstretch>0</verstretch>
+                </sizepolicy>
+               </property>
+               <property name="minimumSize">
+                <size>
+                 <width>100</width>
+                 <height>40</height>
+                </size>
+               </property>
+               <property name="maximumSize">
+                <size>
+                 <width>100</width>
+                 <height>40</height>
+                </size>
+               </property>
+               <property name="styleSheet">
+                <string notr="true">QPushButton {
 	background-color:rgb(176, 206, 0);
 	color:rgb(255, 255, 255);
 	border:none;
@@ -754,10 +736,13 @@ QPushButton:hover {
 	background-color:rgb(58, 186, 255);
 
 }</string>
-            </property>
-            <property name="text">
-             <string>Decrypt</string>
-            </property>
+               </property>
+               <property name="text">
+                <string>Decrypt</string>
+               </property>
+              </widget>
+             </item>
+            </layout>
            </widget>
           </item>
          </layout>
