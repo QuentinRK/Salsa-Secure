@@ -17,7 +17,6 @@ class FileEncryptorWindow(QtWidgets.QMainWindow, Ui_MainWindow):
         self.ui = Ui_MainWindow()
         self.setupUi(self)
 <<<<<<< HEAD:code/encryptor_win.py
-<<<<<<< HEAD:code/encryptor_win.py
         self.windowOpacity()
         self.setWindowFlags(QtCore.Qt.WindowFlags(QtCore.Qt.FramelessWindowHint | QtCore.Qt.WindowStaysOnTopHint))
         self.show()
@@ -41,17 +40,6 @@ class FileEncryptorWindow(QtWidgets.QMainWindow, Ui_MainWindow):
 
         self.browse_btn.clicked.connect(self.browse)
         self.encrypt_btn.clicked.connect(self.compress) 
-=======
-        # self.setWindowOpacity(0.95)
-        # self.setWindowFlags(QtCore.Qt.WindowFlags(QtCore.Qt.FramelessWindowHint | QtCore.Qt.WindowStaysOnTopHint))
-        # self.setAttribute(QtCore.Qt.WA_TranslucentBackground)   
-
-
-        self.show()
-
-        self.browse_btn.clicked.connect(self.browse)
-        self.encrypt_btn.clicked.connect(self.compress)
->>>>>>> parent of 4b45dfc... frameless window feature has been added with the respective buttons:code/file_encryptor.py
 
     def browse(self):
         options = QFileDialog.Options()
@@ -80,14 +68,11 @@ class FileEncryptorWindow(QtWidgets.QMainWindow, Ui_MainWindow):
    
 
 
-<<<<<<< HEAD:code/encryptor_win.py
 
 
 
 
         
-=======
->>>>>>> parent of 4b45dfc... frameless window feature has been added with the respective buttons:code/file_encryptor.py
 
  
     
@@ -97,11 +82,8 @@ class FileEncryptorWindow(QtWidgets.QMainWindow, Ui_MainWindow):
 if __name__ == "__main__":
     FileEncryptorWindow()
 <<<<<<< HEAD:code/encryptor_win.py
-<<<<<<< HEAD:code/encryptor_win.py
 
 
 
-=======
->>>>>>> parent of 4b45dfc... frameless window feature has been added with the respective buttons:code/file_encryptor.py
 =======
 >>>>>>> parent of 4b45dfc... frameless window feature has been added with the respective buttons:code/file_encryptor.py
