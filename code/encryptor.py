@@ -9,6 +9,11 @@ import stdiomask
 from base64 import b64decode, b64encode
 
 
+"""
+User input and the alterations of threading settings are needed
+
+"""
+
 class encryptor:
     def __init__(self):
         self.mode = AES.MODE_CBC
