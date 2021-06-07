@@ -17,6 +17,9 @@ class Ui_MainWindow(object):
         MainWindow.setWindowModality(QtCore.Qt.ApplicationModal)
         MainWindow.resize(450, 718)
         MainWindow.setMinimumSize(QtCore.QSize(400, 718))
+        font = QtGui.QFont()
+        font.setFamily(".AppleTraditionalChineseFont")
+        MainWindow.setFont(font)
         self.centralwidget = QtWidgets.QWidget(MainWindow)
         self.centralwidget.setStyleSheet("QWidget{\n"
 "    background-color:rgb(50, 50, 50);\n"
@@ -31,7 +34,7 @@ class Ui_MainWindow(object):
         self.Container = QtWidgets.QFrame(self.centralwidget)
         self.Container.setMinimumSize(QtCore.QSize(0, 530))
         self.Container.setStyleSheet("QFrame {\n"
-"    background-color:rgb(50, 50, 50);\n"
+"    background-color:  #f8f7f9;\n"
 "    borders:none;\n"
 "    border-radius:6px;\n"
 "}")
@@ -186,10 +189,12 @@ class Ui_MainWindow(object):
         self.horizontalLayout_4.setObjectName("horizontalLayout_4")
         self.File_Encryptor = QtWidgets.QLabel(self.Title)
         font = QtGui.QFont()
-        font.setPointSize(40)
+        font.setFamily("Bodoni 72")
+        font.setPointSize(55)
         self.File_Encryptor.setFont(font)
         self.File_Encryptor.setStyleSheet("QLabel{\n"
-"    color:white;\n"
+"    color: #e52a0d;\n"
+"\n"
 "}")
         self.File_Encryptor.setAlignment(QtCore.Qt.AlignCenter)
         self.File_Encryptor.setObjectName("File_Encryptor")
@@ -200,6 +205,7 @@ class Ui_MainWindow(object):
         self.body.setMaximumSize(QtCore.QSize(16777215, 600))
         font = QtGui.QFont()
         font.setFamily("Fira Code")
+        font.setPointSize(20)
         self.body.setFont(font)
         self.body.setFrameShape(QtWidgets.QFrame.StyledPanel)
         self.body.setFrameShadow(QtWidgets.QFrame.Raised)
@@ -225,7 +231,7 @@ class Ui_MainWindow(object):
         font.setPointSize(25)
         self.outline.setFont(font)
         self.outline.setStyleSheet("QLabel{      \n"
-"        background-color:rgb(176, 208, 0);\n"
+"        background-color: rgb(179, 207, 0);\n"
 "        color:white;\n"
 "        borders:none;\n"
 "        border-radius:200px;\n"
@@ -244,7 +250,7 @@ class Ui_MainWindow(object):
         font.setPointSize(25)
         self.loading_screen.setFont(font)
         self.loading_screen.setStyleSheet("QLabel{      \n"
-"        background-color:rgb(43, 187, 255);\n"
+"        background-color:#e52a0d;\n"
 "        color:white;\n"
 "        borders:none;\n"
 "        border-radius:190px;\n"
@@ -255,11 +261,12 @@ class Ui_MainWindow(object):
         self.statusScreen = QtWidgets.QLabel(self.Info_Screen)
         self.statusScreen.setGeometry(QtCore.QRect(90, 100, 221, 101))
         font = QtGui.QFont()
-        font.setPointSize(16)
+        font.setFamily("Bodoni 72")
+        font.setPointSize(20)
         self.statusScreen.setFont(font)
         self.statusScreen.setStyleSheet("QLabel {\n"
 "    background-color:rgb(240, 244, 244);\n"
-"    color:rgb(137, 139, 139);\n"
+"    color:rgb(224, 46, 0);\n"
 "    borders:none;\n"
 "    border-radius:20px;\n"
 "}")
@@ -271,7 +278,7 @@ class Ui_MainWindow(object):
         font.setPointSize(40)
         self.percentage.setFont(font)
         self.percentage.setStyleSheet("QLabel{\n"
-"    background-color:rgb(58, 186, 255);    \n"
+"    background-color:rgb(179, 207, 0);    \n"
 "    color:rgb(224, 228, 228);\n"
 "}")
         self.percentage.setAlignment(QtCore.Qt.AlignCenter)
@@ -281,7 +288,7 @@ class Ui_MainWindow(object):
         self.progressBar.setMinimumSize(QtCore.QSize(0, 10))
         self.progressBar.setMaximumSize(QtCore.QSize(16777215, 10))
         self.progressBar.setStyleSheet("QProgressBar{\n"
-"    background-color:rgb(44, 150, 207);\n"
+"    background-color:rgb(240, 244, 244);\n"
 "    color:green;\n"
 "    borders:none;\n"
 "    border-radius:4px;\n"
@@ -289,7 +296,7 @@ class Ui_MainWindow(object):
 "}\n"
 "\n"
 "QProgressBar::chunk {\n"
-"    background-color:rgb(179, 209, 0);\n"
+"    background-color:rgb(182, 210, 0);\n"
 "    borders:none;\n"
 "    border-radius:4px;\n"
 "}")
