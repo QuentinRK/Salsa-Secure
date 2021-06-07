@@ -10,7 +10,7 @@ from PyQt5.QtWidgets import (QApplication, QDialog, QFileDialog, QInputDialog,
 
 from encryptor import encryptor
 from encryptor_ui import Ui_MainWindow
-from dialogs.password import Ui_Password as passWin
+
 
 
 class Thread(QThread):
@@ -63,7 +63,6 @@ class CreateZip(QThread):
         self.newDir = '/'.join(dirList)
         os.chdir(self.newDir)
 
-        self.folderName += '(encrypted)'
         shutil.make_archive(self.folderName, 'tar', dir)
 
     def runEncryption(self):
@@ -78,10 +77,8 @@ class FileEncryptorWindow(QtWidgets.QMainWindow, Ui_MainWindow):
         super().__init__()
         self.ui = Ui_MainWindow()
         self.setupUi(self)
-<<<<<<< HEAD:code/encryptor_win.py
         self.windowOpacity()
-        self.setWindowFlags(QtCore.Qt.WindowFlags(
-            QtCore.Qt.FramelessWindowHint | QtCore.Qt.WindowStaysOnTopHint))
+        self.setWindowFlags(QtCore.Qt.WindowFlags(QtCore.Qt.FramelessWindowHint | QtCore.Qt.WindowStaysOnTopHint))
         self.show()
         self.setAttribute(QtCore.Qt.WA_TranslucentBackground)
 
@@ -98,75 +95,45 @@ class FileEncryptorWindow(QtWidgets.QMainWindow, Ui_MainWindow):
         self.MaximizeWin.setCheckable(True)
         self.oldPos = self.pos()
         # ------------------------- End --------------------------
-<<<<<<< HEAD
-=======
-        # self.setWindowOpacity(0.95)
-        # self.setWindowFlags(QtCore.Qt.WindowFlags(QtCore.Qt.FramelessWindowHint | QtCore.Qt.WindowStaysOnTopHint))
-        # self.setAttribute(QtCore.Qt.WA_TranslucentBackground)   
-=======
 
         # self.browse_btn.clicked.connect(self.browse)
         self.encrypt_btn.clicked.connect(self.encrypt)
         self.decrypt_btn.clicked.connect(self.decrypt)
 
     def encrypt(self):
-        self.passwin = Password()
->>>>>>> 495fb434ac4f986a839ce1062a131df2d46bec82
-
-        self.passwin.Passwordfunc()
-        # self.showPassword()
-
-<<<<<<< HEAD
-        self.show()
->>>>>>> parent of 4b45dfc... frameless window feature has been added with the respective buttons:code/file_encryptor.py
-
-        self.browse_btn.clicked.connect(self.browse)
-        self.encrypt_btn.clicked.connect(self.compress) 
-
-    def browse(self):
-        options = QFileDialog.Options()
+        # Gather the location of the folder to encrypt
         self.folder_dir = str(QFileDialog.getExistingDirectory(self, "Select Directory"))
-        self.search.setText(self.folder_dir)
-    
-    def compress(self):
-        e = encryptor()
-        fileFormat = 'zip'
-        compressName = QInputDialog.getText(self, 'Zip Filename', 'Provide a name for the zip file: ')
-        zipfile = shutil.make_archive(compressName[0], fileFormat, self.folder_dir)
-        e.encrypt(zipfile)
-        # base = os.getcwd()
-        # shutil.move( zipfile , (self.folder_dir +'/{}.{}'.format(compressName[0], fileFormat)))
 
-    
-<<<<<<< HEAD:code/encryptor_win.py
-=======
-        shutil.move((base +'/{}.{}'.format(compressName[0], fileFormat)), (self.folder_dir +'/{}.{}'.format(compressName[0], fileFormat)))
-        
+        # Create a zip file from the folder
+        self.threadFunc(self.folder_dir, "encryption")
 
-=======
-        # self.folder_dir = str(
-        #     QFileDialog.getExistingDirectory(self, "Select Directory"))
+        # Store the new zip file directory 
+        zip_directory = self.folder_dir + ".tar"
 
-    def showSecondwin(self):
-        self.PasswordWin = QtWidgets.QMainWindow()
-        self.ui = Ui_PasswordWin()
-        self.ui.setupUi(self.PasswordWin)
-        self.PasswordWin.show()
+        # pass the directory and key to the encrypt function 
+
+        # TODO: Must implement a way for this response to wait for the thread to finish 
+        time.sleep(5)
+
+        # TODO: Must gather user input for the key 
+        encryptor.encrypt(self, key="hello", file=zip_directory)
+
+
+
 
     def decrypt(self):
-        self.threadFunc(type='decryption')
->>>>>>> 495fb434ac4f986a839ce1062a131df2d46bec82
+         # Gather the location of the folder to encrypt
+        options = QFileDialog.Options()
+        self.folder_dir = QFileDialog.getOpenFileName(self,"QFileDialog.getOpenFileName()","","Zip Files (*.tar)", options=options)
 
-    def threadFunc(self, directory, type='encryption'):
-        if type == 'encryption':
-            self.thread = Thread()
-        else:
-            self.thread = Thread(type='decryption')
+        # TODO: Need to gather user input for validation 
+        encryptor.decrypt(self, self.folder_dir[0])
 
+    def threadFunc(self, directory, type):
         self.startZip = CreateZip(dir=directory)
         self.startZip.start()
         self.statusScreen.setText('Compressing Folder\nPlease Wait')
-        self.startZip.finished.connect(self.startProgress)
+        self.startZip.finished.connect(lambda: self.startProgress(type))
 
     def progress(self, cnt):
         self.progressBar.setValue(cnt)
@@ -177,7 +144,13 @@ class FileEncryptorWindow(QtWidgets.QMainWindow, Ui_MainWindow):
             self.progressBar.setVisible(False)
             self.percentage.setVisible(False)
 
-    def startProgress(self):
+    def startProgress(self, type="encryption"):
+        if type == "decryption":
+            threadType = "decryption"
+        else:
+            threadType= "encryption"
+
+        self.thread = Thread(type=threadType)
         self.statusScreen.setGeometry(QtCore.QRect(90, 100, 221, 101))
         self.progressBar.setVisible(True)
         self.percentage.setVisible(True)
@@ -188,16 +161,6 @@ class FileEncryptorWindow(QtWidgets.QMainWindow, Ui_MainWindow):
     def setLoadingScreenText(self, msg):
         self.statusScreen.setText(msg)
 
-<<<<<<< HEAD
->>>>>>> parent of 4b45dfc... frameless window feature has been added with the respective buttons:code/file_encryptor.py
-
-   
-
-
-
-
-
-=======
     # --------- Window Button Functions ---------
 
     def maximize(self):
@@ -232,44 +195,7 @@ class FileEncryptorWindow(QtWidgets.QMainWindow, Ui_MainWindow):
         # print(delta)
         self.move(self.x() + delta.x(), self.y() + delta.y())
         self.oldPos = event.globalPos()
-    # ----------------------------------- End --------------------------------
->>>>>>> 495fb434ac4f986a839ce1062a131df2d46bec82
-
-
-class Password:
-    def __init__(self):
-        self.passwordWin = QtWidgets.QDialog()
-        self.window = passWin()
-        self.window.setupUi(self.passwordWin)
-
-    def Passwordfunc(self):
-        passwordInput = self.window.password.text()
-        confirmPasswordInput = self.window.confirmPassword.text()
-
-        if self.passwordWin.exec_() and (self.window.password.text() and self.window.confirmPassword.text()) != "":
-            self.passwordValidator(
-                self.window.password.text(), self.window.confirmPassword.text())
-
-    def passwordValidator(self, a, b):
-        if a != b:
-            print('FAILURE')
-            self.window.password.clear()
-            self.window.confirmPassword.clear()
-            self.passwordWin.exec_()
-            print(a)
-            print(b)
-        else:
-            print('SUCCESS')
-
+    # ----------------------------------- End -----------------#
 
 if __name__ == "__main__":
     FileEncryptorWindow()
-<<<<<<< HEAD
-<<<<<<< HEAD:code/encryptor_win.py
-
-
-
-=======
->>>>>>> parent of 4b45dfc... frameless window feature has been added with the respective buttons:code/file_encryptor.py
-=======
->>>>>>> 495fb434ac4f986a839ce1062a131df2d46bec82

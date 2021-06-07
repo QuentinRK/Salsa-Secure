@@ -1,7 +1,7 @@
-from Crypto.Cipher import AES
+from Crypto.Cipher import AES, Salsa20
 from Crypto.Util.Padding import pad, unpad
 from Crypto.Random import get_random_bytes
-from Crypto.Protocol.KDF import PBKDF2
+from Crypto.Hash import SHA3_256
 import json
 import os
 import shutil
@@ -15,77 +15,48 @@ class encryptor:
         self.salt = get_random_bytes(32)
         self.filename = None
 
+    # TODO: User input needs to generate a key 
     def encrypt(self, key, file):
-        output_file = 'encrypted/' + (file.strip('.zip')) + '.bin'
-        newfile = self.convertToBytes(file)
-        cipher = AES.new(key, AES.MODE_CBC)
-        ciphered_data = cipher.encrypt(pad(newfile, AES.block_size))
-        base = os.getcwd()
-        encrypted_path = base + '/encrypted'
+        file_name = file.split("/")[-1].strip("tar")
+        file_name = file_name[:-1]
+        newfile = file_name + " binary.tar"
 
-        if not os.path.exists(encrypted_path):
-            os.makedirs(os.path.join(base, 'encrypted'))
+        old_file = open(file, "rb")
+        new_file = open(newfile, 'wb')
+            
+        items = old_file.read()
+        
+        key = get_random_bytes(32)
+        cipher = Salsa20.new(key=key)
+        msg = cipher.nonce + cipher.encrypt(items)
 
-        with open(output_file, 'wb') as f:
-            f.write(self.salt)
-            f.write(cipher.iv)
-            f.write(ciphered_data)
+        new_file.write(key)
+        new_file.write(msg)
+
+        old_file.close()
+        new_file.close()
         os.remove(file)
 
-    def convertToBytes(self, file):
-        with open(file, 'rb') as f:
-            items = f.read()
-        return items
+    
+    # TODO: Need to create a function for password validation 
+    def decrypt(self, file):
+        newfile = file.split()
+        newfile = "".join(newfile[:-1]) + ".tar"
 
-    def decrypt(self, key, file):
-        file_in = open(file, 'rb')
-        salt = file_in.read(32)
-        iv = file_in.read(16)
-        ciphered_data = file_in.read()
-        file_in.close()
-        cipher = AES.new(key, AES.MODE_CBC, iv=iv)
-        original_data = unpad(cipher.decrypt(ciphered_data), AES.block_size)
-        name = file.strip('.bin').lstrip('encrypted')
+        file = open(file, 'rb')
+        new_file = open(newfile, 'wb')
 
-        with open((os.getcwd() + f'{name}.zip'), 'wb') as f:
-            f.write(original_data)
+        key = file.read(32)
+        msg_nonce = file.read(8)
+        msg = file.read()
 
-        shutil.rmtree('encrypted')
-        print('decryption complete')
+        cipher = Salsa20.new(key=key, nonce=msg_nonce)
+        content = cipher.decrypt(msg)
+        new_file.write(content)
 
-    def retrieve_salt(self, file):
-        with open(file, 'rb') as f:
-            salt = f.read(32)
-
-        self.salt = salt
-
-    def PasswordToKey(self, password):
-        key = PBKDF2(password, self.salt, dkLen=32)
-        return key
-
-#     def main(self):
-#         choice = input('would you like to (e)ncrypt or (d)ecrypt: ')
-
-#         if choice == 'e':
-#             file = input('what is the file name: ')
-#             password = stdiomask.getpass()
-#             self.encrypt(self.PasswordToKey(password), file)
-#             print('encryption complete')
-#         elif choice == 'd':
-#             file = input('what is the file name: ')
-#             password = stdiomask.getpass()
-#             self.retrieve_salt(file)
-#             self.decrypt(self.PasswordToKey(password), file)
-#         else:
-#             print('no option selected')
-
-
-# e = encryptor()
-# e.main()
-
-
-# # e.decrypt('encrypted/encrypted.bin')
-
-
+        file.close()
+        new_file.close()
+        os.remove(file)
+        
 if __name__ == "__main__":
     encryptor()
