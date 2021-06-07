@@ -24,7 +24,7 @@ class encryptor:
     def encrypt(self, key, file):
         file_name = file.split("/")[-1].strip("tar")
         file_name = file_name[:-1]
-        newfile = file_name + " binary.tar"
+        newfile = file_name + " (encrypted).tar"
 
         old_file = open(file, "rb")
         new_file = open(newfile, 'wb')
@@ -48,18 +48,18 @@ class encryptor:
         newfile = file.split()
         newfile = "".join(newfile[:-1]) + ".tar"
 
-        file = open(file, 'rb')
+        old_file = open(file, 'rb')
         new_file = open(newfile, 'wb')
 
-        key = file.read(32)
-        msg_nonce = file.read(8)
-        msg = file.read()
+        key = old_file.read(32)
+        msg_nonce = old_file.read(8)
+        msg = old_file.read()
 
         cipher = Salsa20.new(key=key, nonce=msg_nonce)
         content = cipher.decrypt(msg)
         new_file.write(content)
 
-        file.close()
+        old_file.close()
         new_file.close()
         os.remove(file)
         
