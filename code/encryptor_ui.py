@@ -186,7 +186,7 @@ class Ui_MainWindow(object):
         self.horizontalLayout_4.setObjectName("horizontalLayout_4")
         self.File_Encryptor = QtWidgets.QLabel(self.Title)
         font = QtGui.QFont()
-        font.setPointSize(25)
+        font.setPointSize(40)
         self.File_Encryptor.setFont(font)
         self.File_Encryptor.setStyleSheet("QLabel{\n"
 "    color:white;\n"
@@ -198,6 +198,9 @@ class Ui_MainWindow(object):
         self.body = QtWidgets.QFrame(self.Container)
         self.body.setMinimumSize(QtCore.QSize(300, 700))
         self.body.setMaximumSize(QtCore.QSize(16777215, 600))
+        font = QtGui.QFont()
+        font.setFamily("Fira Code")
+        self.body.setFont(font)
         self.body.setFrameShape(QtWidgets.QFrame.StyledPanel)
         self.body.setFrameShadow(QtWidgets.QFrame.Raised)
         self.body.setObjectName("body")
@@ -362,18 +365,8 @@ class Ui_MainWindow(object):
         self.ExitWin.setText(_translate("MainWindow", "x"))
         self.MinimizeWin.setText(_translate("MainWindow", "-"))
         self.MaximizeWin.setText(_translate("MainWindow", "+"))
-        self.File_Encryptor.setText(_translate("MainWindow", "File Encryptor"))
+        self.File_Encryptor.setText(_translate("MainWindow", "Salsa Secure"))
         self.statusScreen.setText(_translate("MainWindow", "Ready"))
         self.percentage.setText(_translate("MainWindow", "0%"))
         self.encrypt_btn.setText(_translate("MainWindow", "Encrypt"))
         self.decrypt_btn.setText(_translate("MainWindow", "Decrypt"))
-
-
-if __name__ == "__main__":
-    import sys
-    app = QtWidgets.QApplication(sys.argv)
-    MainWindow = QtWidgets.QMainWindow()
-    ui = Ui_MainWindow()
-    ui.setupUi(MainWindow)
-    MainWindow.show()
-    sys.exit(app.exec_())
