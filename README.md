@@ -3,7 +3,6 @@
 
 Salsa Secure is a GUI application that is used to encrypt directories with sensitive or private information.
 Salsa Secure implements the salsa20 cipher which is used for the encryption along with multiple hashing alogrithims. 
-To get started follow the simple steps below.
 
 
 ## Table Contents
